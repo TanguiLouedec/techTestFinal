@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-const CLIENT_ID = '823088350817b5fcb472'
-const CLIENT_SECRET = '15b9d63357f14fc7547c9b42994f5508811405dd'
+const CLIENT_ID = process.env.CLIENT_ID
+const CLIENT_SECRET = process.env.CLIENT_SECRET
 
 export default async function handler(
     req: NextApiRequest,
