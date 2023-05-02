@@ -1,7 +1,5 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import {useRouter} from "next/router";
-import {useEffect} from "react";
 
 type User = {
     name: string
@@ -30,16 +28,6 @@ type Props = {
     repositories: Repository[]
 }
 export default function Profile({ user, repositories }: Props) {
-    const router = useRouter()
-
-    useEffect(() => {
-        // Always do navigations after the first render
-        router.push('/profile', undefined, { shallow: true })
-    }, [])
-
-    useEffect(() => {
-        // The counter changed!
-    }, [router.query.counter])
     return (
         <div className={"flex flex-col items-center gap-10"}>
             <Head>
@@ -113,6 +101,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             Authorization: `token ${access_token}`,
         },
     });
+
 
     if (!userResponse.ok) {
         return {
